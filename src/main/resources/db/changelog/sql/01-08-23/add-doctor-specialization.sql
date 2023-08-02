@@ -1,0 +1,1 @@
+alter table doctors add column specialization VARCHAR(3);
