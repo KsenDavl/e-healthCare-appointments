@@ -1,5 +1,7 @@
 package com.example.ehealthcarepatient.enums;
 
+import java.util.Optional;
+
 public enum DocSpecialization {
 
     GYN("Gynecology"),
@@ -9,13 +11,22 @@ public enum DocSpecialization {
     GST("Gastroenterology"),
     GPR("General Practice");
 
-    private final String name;
+    private final String fullName;
 
     DocSpecialization(String name) {
-        this.name = name;
+        this.fullName = name;
     }
 
-    String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
+    }
+
+    public static Optional<DocSpecialization> getByName(String fullName) {
+        for (DocSpecialization s : values()) {
+            if (s.fullName.equals(fullName)) {
+                return Optional.of(s);
+            }
+        }
+        return Optional.empty();
     }
 }

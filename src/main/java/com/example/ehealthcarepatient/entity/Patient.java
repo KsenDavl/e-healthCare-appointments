@@ -43,6 +43,6 @@ public class Patient {
     @Column(name = "rh_factor")
     private boolean rhFactor;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient")
     private List<Appointment> appointments;
 }

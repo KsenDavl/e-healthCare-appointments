@@ -8,8 +8,10 @@ create sequence if not exists doctors_seq;
         pass_no VARCHAR(100) not null unique,
         address VARCHAR(100) not null,
         work_info VARCHAR(1024) not null,
-        phone_number INTEGER not null,
-        birth_date DATE not null
+        phone_number BIGINT not null,
+        birth_date DATE not null,
+        blood_group INT,
+        rh_factor BOOLEAN
         );
 
         create table doctors (

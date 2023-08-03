@@ -33,9 +33,9 @@ public class Doctor {
     @Enumerated(EnumType.STRING)
     @Column(name = "specialization")
     private DocSpecialization specialization;
-    @Column(name = "name")
+    @Column(name = "room_no")
     private int roomNo;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
     private List<Appointment> appointments;
 }
