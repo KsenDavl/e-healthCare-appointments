@@ -1,6 +1,6 @@
 package com.example.ehealthcarepatient.enums;
 
-public enum TimeSpot {
+public enum TimeSlot {
 
     A("10:00"),
     B("11:00"),
@@ -11,7 +11,7 @@ public enum TimeSpot {
 
     private final String time;
 
-    TimeSpot(String time) {
+    TimeSlot(String time) {
         this.time = time;
     }
 

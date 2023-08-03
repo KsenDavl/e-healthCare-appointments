@@ -20,9 +20,10 @@ create sequence if not exists doctors_seq;
         );
 
         CREATE TABLE appointments (
+        id BIGINT not null primary key,
         patient_id INTEGER references patients(id),
         doctor_id INTEGER references doctors(id),
-        date DATE,
+        app_date DATE,
         time_spot VARCHAR(1)
         );
 

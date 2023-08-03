@@ -17,17 +17,13 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "appointments")
+@Table(name = "timeslots")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Appointment {
+public class DoctorAvailableTimeSlot {
 
     @Id
     private long id;
-
-    @JoinColumn(name = "patient_id")
-    @ManyToOne
-    private Patient patient;
 
     @JoinColumn(name = "doctor_id")
     @ManyToOne
@@ -39,5 +35,7 @@ public class Appointment {
     @Enumerated(EnumType.STRING)
     @Column(name = "time_spot")
     private TimeSlot timeSpot;
+
+
 
 }
