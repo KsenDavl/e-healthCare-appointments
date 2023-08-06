@@ -1,12 +1,21 @@
 package com.example.ehealthcarepatient.controller;
 
+import com.example.ehealthcarepatient.service.AppointmentService;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@AllArgsConstructor
 public class AppointmentController {
 
-    public void createAppointment(long patientId, long timeSlotId) {
+    private final AppointmentService appointmentService;
 
+    //todo get patientId from principal
+    @PostMapping("appointment/{patientId}/{timeSlotId}")
+    public void createAppointment(@PathVariable long patientId, @PathVariable long timeSlotId) {
+        appointmentService.createAppointment(patientId, timeSlotId);
     }
 
 }

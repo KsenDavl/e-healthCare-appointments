@@ -15,7 +15,7 @@ public enum TimeSlot {
         this.time = time;
     }
 
-    String getTime() {
+    public String getTime() {
         return time;
     }
 

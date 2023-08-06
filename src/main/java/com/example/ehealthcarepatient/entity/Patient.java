@@ -34,7 +34,7 @@ public class Patient {
     @Column(name = "work_info")
     private String workInfo;
     @Column(name = "phone_number")
-    private int phoneNumber;
+    private long phoneNumber;
     @Column(name = "birth_date")
     private LocalDate birthDate;
 

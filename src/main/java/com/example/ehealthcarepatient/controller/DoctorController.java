@@ -1,11 +1,13 @@
 package com.example.ehealthcarepatient.controller;
 
+import com.example.ehealthcarepatient.dto.response.AvailableTimeSlotsForTheDayDto;
 import com.example.ehealthcarepatient.entity.Doctor;
-import com.example.ehealthcarepatient.entity.DoctorAvailableTimeSlot;
 import com.example.ehealthcarepatient.service.DoctorService;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -27,8 +29,9 @@ public class DoctorController {
         return doctorService.getAllSpecializations();
     }
 
-    @GetMapping("/doctor/{doctorId}/timeslots/{date}")
-    public List<DoctorAvailableTimeSlot> getAvailableTimeSlots(@PathVariable long doctorId, @PathVariable LocalDate date) {
+    @GetMapping("/doctor/{doctorId}/timeslots")
+    public List<AvailableTimeSlotsForTheDayDto> getAvailableTimeSlotsForTheDay(@PathVariable long doctorId,
+                                                                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return doctorService.getAvailableTimeSlots(doctorId, date);
     }
 

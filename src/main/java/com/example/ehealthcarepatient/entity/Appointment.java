@@ -5,9 +5,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +26,8 @@ import java.time.LocalDate;
 public class Appointment {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_generator")
+    @SequenceGenerator(name = "app_generator", sequenceName = "appointments_seq", allocationSize = 1)
     private long id;
 
     @JoinColumn(name = "patient_id")
@@ -37,7 +42,7 @@ public class Appointment {
     private LocalDate date;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "time_spot")
-    private TimeSlot timeSpot;
+    @Column(name = "time_slot")
+    private TimeSlot timeSlot;
 
 }

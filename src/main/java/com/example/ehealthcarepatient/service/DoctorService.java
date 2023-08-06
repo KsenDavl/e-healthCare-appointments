@@ -1,8 +1,10 @@
 package com.example.ehealthcarepatient.service;
 
+import com.example.ehealthcarepatient.dto.response.AvailableTimeSlotsForTheDayDto;
 import com.example.ehealthcarepatient.entity.Doctor;
 import com.example.ehealthcarepatient.entity.DoctorAvailableTimeSlot;
 import com.example.ehealthcarepatient.enums.DocSpecialization;
+import com.example.ehealthcarepatient.mapper.TimeSlotMapper;
 import com.example.ehealthcarepatient.repository.DoctorAvailableTimeSlotRepository;
 import com.example.ehealthcarepatient.repository.DoctorRepository;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,8 @@ public class DoctorService {
 
     private final DoctorAvailableTimeSlotRepository timeSlotRepository;
 
+    private final TimeSlotMapper timeSlotMapper;
+
     public List<Doctor> getAllDoctorsBySpecialization(String specialization) {
         DocSpecialization docSpecialization =
                 DocSpecialization.getByName(specialization).orElseThrow();
@@ -29,8 +33,10 @@ public class DoctorService {
         return Arrays.stream(DocSpecialization.values()).map(DocSpecialization::getFullName).toList();
     }
 
-    public List<DoctorAvailableTimeSlot> getAvailableTimeSlots(long doctorId, LocalDate date) {
-        return timeSlotRepository.getDoctorAvailableTimeSlotByDoctorIdAndDate(doctorId, date);
+    public List<AvailableTimeSlotsForTheDayDto> getAvailableTimeSlots(long doctorId, LocalDate date) {
+        List<DoctorAvailableTimeSlot> timeSlotEntities =
+                timeSlotRepository.getDoctorAvailableTimeSlotByDoctorIdAndDate(doctorId, date);
+        return timeSlotMapper.toDtoList(timeSlotEntities);
     }
 
 }
