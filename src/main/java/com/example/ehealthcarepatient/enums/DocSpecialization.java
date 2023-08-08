@@ -4,12 +4,12 @@ import java.util.Optional;
 
 public enum DocSpecialization {
 
-    GYN("Gynecology"),
-    CRD("Cardiology"),
-    ONC("Oncology"),
-    DRM("Dermatology"),
-    GST("Gastroenterology"),
-    GPR("General Practice");
+    GYN("gynecology"),
+    CRD("cardiology"),
+    ONC("oncology"),
+    DRM("dermatology"),
+    GST("gastroenterology"),
+    GPR("generalPractice");
 
     private final String fullName;
 
